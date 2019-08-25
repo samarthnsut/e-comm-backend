@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign In</title>
+  
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/signin.css">
+</head>
+<body>
+ <div id="main">
+    <div id="signup">
+      <h1>
+        Sign In
+      </h1>
+    </div>
+    <div id="form">
+      <form action="maintain">  
+        <div class="label"><label><b>Username:</b></label></div>
+        <input type="text" name="user name"><br><br>
+        <div class="label"><label><b>Password:&nbsp </b></label></div>
+        <input type="Password" name="password"><br><br>
+        <div id="check"><input type="checkbox" name="remember" style="width: 15px; height: 15px; padding-top: 10px;">&nbspRemember Me</div>
+        <br>
+        <button type="submit" class="btn btn-primary" id="submit">Sign In</button><br>
+      </form>
+    </div>
+   </div>
+   <div id="down">
+   <span id="forgot">
+    <a href="maintain">Forgot Password?</a>
+  </span>
+  <span id="sign">
+    New ? <a href="signup">Create account</a>
+  </span>
+</div>
+</body>
+</html>
