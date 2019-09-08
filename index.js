@@ -41,17 +41,14 @@ app.get("/signup",function(req,res){
     return res.render("signup")
 })
 app.post("/new-account",function(req,res){
-    if(req.body.password1 != req.body.password2)
-    {
-        return res.redirect('signup');
-    }
+    
     Account.create({
         name : req.body.name,
         phone : req.body.phone,
         l_name : req.body.l_name,
         e_mail : req.body.email,
         u_name: req.body.uname,
-        password : req.body.password1
+        password : req.body.password
     },function(err,newAccount){
         if(err){
             console.log("error in creating acc  ", err);
@@ -60,6 +57,8 @@ app.post("/new-account",function(req,res){
         yourAccount=newAccount;
         if(req.body.password!=req.body.confirm_password){
            console.log("password did not match")
+           console.log(req.body.password)
+           console.log(req.body.confirm_password)
            return res.redirect("back")
         }
         else{
