@@ -6,6 +6,7 @@ const db = require("./config/moongose");
 const app=express();
 const Account = require('./modals/Account')
 
+let yourAccount = undefined;
 
 app.set("view engine",'ejs')
 app.set('views',path.join(__dirname, 'views'))
@@ -26,7 +27,9 @@ app.get("/", function(req,res){
     return res.render('index')
 })
 app.get("/home",function(req,res){
-    return res.render('home')
+    return res.render('home', {
+        your_account: yourAccount
+    });
 })
 app.get("/signin",function(req,res){
     return res.render("signin")
@@ -37,15 +40,18 @@ app.get('/maintain', function(req,res){
 app.get("/signup",function(req,res){
     return res.render("signup")
 })
-let yourAccount={};
 app.post("/new-account",function(req,res){
+    if(req.body.password1 != req.body.password2)
+    {
+        return res.redirect('signup');
+    }
     Account.create({
         name : req.body.name,
         phone : req.body.phone,
         l_name : req.body.l_name,
         e_mail : req.body.email,
         u_name: req.body.uname,
-        password : req.body.password
+        password : req.body.password1
     },function(err,newAccount){
         if(err){
             console.log("error in creating acc  ", err);

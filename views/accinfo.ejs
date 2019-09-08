@@ -1,43 +1,50 @@
 <html>
-    <head>
-        <title>
-            <%= title %>
-        </title>
-        <script src="https://kit.fontawesome.com/a47cc588b2.js"></script>
-        <link href='https://fonts.googleapis.com/css?family=Baumans' rel='stylesheet'>
-        <link href='https://fonts.googleapis.com/css?family=Bigelow Rules' rel='stylesheet'>
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-      
-          <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-      
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-      
-          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-            <link rel="stylesheet" type="text/css" href="accinfo.css">
-    </head>
-    <div id="head" class="text-center">
-        <h1>
-            YOUR ACCOUNT INFO
-        </h1>
-    </div>
-    <div id="detail" class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-         <div class="info col-lg-12">
-             <b> First Name : </b><%= name %> 
-         </div>
-         <div class="info col-lg-12">
-            <b> Last Name : </b><%= lname %> 
-         </div>
-         <div class="info col-lg-12">
-            <b> Contact Number : </b><%= phone %> 
-         </div>
-         <div class="info col-lg-12">
-                <b> E Mail : </b><%= email %> 
-         </div>
-         <div class="info col-lg-12">
-                <b> User Name : </b><%= uname %> 
-         </div>
 
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <script src="https://kit.fontawesome.com/a47cc588b2.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Baumans' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Bigelow Rules' rel='stylesheet'>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="accinfo.css">
+</head>
+<div id="head" class="text-center">
+    <h1>
+        YOUR ACCOUNT INFO
+    </h1>
+</div>
+<div id="detail" class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+    <div class="info col-lg-12">
+        <b> First Name : </b>
+        <%= name %>
     </div>
+    <div class="info col-lg-12">
+        <b> Last Name : </b>
+        <%= lname %>
+    </div>
+    <div class="info col-lg-12">
+        <b> Contact Number : </b>
+        <%= phone %>
+    </div>
+    <div class="info col-lg-12">
+        <b> E Mail : </b>
+        <%= email %>
+    </div>
+    <div class="info col-lg-12">
+        <b> User Name : </b>
+        <%= uname %>
+    </div>
+    <a href="home">
+        <div id="continue">Continue Shopping</div>
+    </a>
+
 </html>
