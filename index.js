@@ -85,6 +85,8 @@ app.post("/create-session",function(req,res){
          console.log("found acc")
          // handling incorrect password
          if(account.password!=req.body.password){
+            
+             console.log("password did not match")
             return res.redirect("back")
          }
          //correct password 
