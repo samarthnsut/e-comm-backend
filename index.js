@@ -71,6 +71,8 @@ app.post("/new-account",function(req,res){
     })
    
 })
+
+
 app.post("/create-session",function(req,res){
     Account.findOne({u_name:req.body.u_name},function(err,account){
        if(err) 
@@ -100,14 +102,16 @@ app.post("/create-session",function(req,res){
         }
     })
 })
+
 app.get("/accinfo",function(req,res){
     if(req.cookies.user_id)
     {
         Account.findById(req.cookies.user_id,function(err,account){
+            yourAccount=account;
             return res.render("accinfo",{
                 title : account.u_name ,
                 name : account.name,
-                phone : yourAccount.phone,
+                phone : account.phone,
                 lname : account.l_name,
                 email : account.e_mail,
                 uname : account.u_name
@@ -118,4 +122,11 @@ app.get("/accinfo",function(req,res){
    else{
        return res.redirect("signin")
    }
+   
+})
+app.get("/sign-out",function(req,res){
+    
+    res.clearCookie("user_id")
+
+    return res.render("signin")
 })

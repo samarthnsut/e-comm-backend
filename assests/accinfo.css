@@ -29,3 +29,10 @@ body {
     animation-fill-mode: forwards;
     box-shadow: 4px 4px rgb(71, 70, 70);
 }
+#sign-out{
+      width: 9%;
+      height: 5%;
+      background-color: #feda6a;
+      margin-left: 80%;
+      margin-top: 5%;
+}
