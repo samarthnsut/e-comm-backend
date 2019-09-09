@@ -41,6 +41,13 @@ html
 .sticky + .content {
   padding-top: 60px;
 }
+#nav-top{
+  background-color: #feda6a;
+  width: 5%;
+  position: fixed;
+  margin-left: 5%;
+  margin-top: 35%;
+}
 body
 {
   min-height: 100%;
@@ -182,7 +189,7 @@ body
     box-shadow: 2px 2px black;
   }
 }
-.press:hover
+.card:hover
 {
   animation-name: slide;
   animation-duration: .5s;
