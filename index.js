@@ -129,6 +129,6 @@ app.get("/accinfo",function(req,res){
 app.get("/sign-out",function(req,res){
     
     res.clearCookie("user_id")
-
+    your_account = undefined;
     return res.render("signin")
 })
