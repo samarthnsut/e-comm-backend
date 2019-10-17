@@ -161,5 +161,8 @@ app.get("/sign-out",function(req,res){
     
     res.clearCookie("user_id")
 
+
     return res.render("home")
+    your_account = undefined;
+    return res.render("signin")
 })
