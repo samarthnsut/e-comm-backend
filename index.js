@@ -1,10 +1,11 @@
 const express =require('express')
 const cookieParser = require('cookie-parser')
 const path = require('path')
-const port=1000;
+const port=1001;
 const db = require("./config/moongose");
 const app=express();
 const Account = require('./modals/Account')
+const Product = require("./modals/user_product")
 
 let yourAccount = undefined;
 
@@ -22,14 +23,30 @@ app.listen(port,function(err){
 
     console.log("server running")
 })
+
+
 app.get("/", function(req,res){
 
     return res.render('index')
 })
 app.get("/home",function(req,res){
-    return res.render('home', {
-        your_account: yourAccount
-    });
+  
+ //Product.find({},function(err,product){
+    
+  //  });
+    Product.find({}).populate('account').exec(function(err,product){
+     
+        if(err){
+            console.log("eror in finding user products",err)
+        }
+        console.log(product);
+       return res.render('home', {
+           your_account : yourAccount,
+           product: product
+    })
+ })
+
+  
 })
 app.get("/signin",function(req,res){
     return res.render("signin")
@@ -91,7 +108,8 @@ app.post("/create-session",function(req,res){
          }
          //correct password 
          else{
-             console.log(account._id)
+             
+             your_account=yourAccount;
              res.cookie('user_id',account.id)
             return res.redirect("/accinfo")
              
@@ -103,6 +121,18 @@ app.post("/create-session",function(req,res){
             return res.redirect("back")
         }
     })
+})
+app.post('/createproduct',function(req,res){
+    console.log(yourAccount);
+    Product.create({
+        pname: req.body.pname,
+        description: req.body.description,
+        account: yourAccount._id
+    }),function(err,product){
+        console.log("error in creating product",err);
+        return res.redirect("back");
+    }
+    return res.redirect("home");
 })
 
 app.get("/accinfo",function(req,res){
@@ -126,9 +156,10 @@ app.get("/accinfo",function(req,res){
    }
    
 })
+
 app.get("/sign-out",function(req,res){
     
     res.clearCookie("user_id")
 
-    return res.render("signin")
+    return res.render("home")
 })

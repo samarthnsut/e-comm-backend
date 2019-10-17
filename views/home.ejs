@@ -577,7 +577,46 @@
                     </div>
                 </div>
             </div>
-
+            <%  if(locals.account){ %>
+            <div id="men-head">
+                 
+                <h3 class="text-center" id="men-head"><b>SELL WITH IMMENSE </b></h3>
+            </div>
+            <br>
+            <br>
+           
+            <div id="product-head">
+                <h4 class="text-center">add product</h4>
+            </div>
+          
+                       <div id="pform" class="text-center">
+                <form action="createproduct" method="POST">
+                    
+                    <input type="text" name="pname" placeholder="name" required><br><br>
+                    <textarea name="description" cols="30" rows="3" placeholder="product description"></textarea><br><br>
+                    <input type="submit" value="Add">
+                </form>
+    
+            </div>
+            <% } %>
+            <div id="men-head"></div>
+            <h3 class="text-center" id="men-head"><b>Product By USERS:</b></h3>
+            <div id="yproduct">
+                <ul>
+                    <% for(let p of product){ %>
+                        <div class="back col-xl-6 col-lg-5 card card-body" id="p_div3" style="position: static;">
+                          
+                           <h3>user : <%= p.account.name %></h3> 
+                           <div class="text-center"><h4>
+                             Name :  <%= p.pname %><br>
+                            description: <%= p.description %></h4>
+                           </div>
+                        </div>
+                           
+                           <% } %>
+                </ul>
+            </div>
+      
             <br>
             <hr style="background-color: rgb(172, 161, 161);">
             <div id="terms">
@@ -589,6 +628,7 @@
                 <br><br>
             </div>
         </div>
+        
         <script src="/jquery.js"></script>
         <script src="/script.js"></script>
 </body>
