@@ -12,9 +12,14 @@ const productSchema= new mongoose.Schema({
     account :{
         type : mongoose.Schema.Types.ObjectId,
         ref : "Account"
+    },
+    comment:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref : "Comment"
     }
 },{
     timestamps: true
 })
+console.log("Made the product schema")
 const Product= mongoose.model("Product",productSchema);
 module.exports= Product;

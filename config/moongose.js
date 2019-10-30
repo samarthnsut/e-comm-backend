@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/e_commerce_account_db', {UseNewUrlParser: true});
+mongoose.connect('mongodb://localhost/e_commerce_account_db');
 
 var db = mongoose.connection;
 
