@@ -1,11 +1,12 @@
 const express =require('express')
 const cookieParser = require('cookie-parser')
 const path = require('path')
-const port=1001;
+const port=2000;
 const db = require("./config/moongose");
 const app=express();
 const Account = require('./modals/Account')
-const Product = require("./modals/user_product")
+const Product = require("./modals/products")
+const Comment = require("./modals/comment")
 
 let yourAccount = undefined;
 
@@ -29,20 +30,31 @@ app.get("/", function(req,res){
 
     return res.render('index')
 })
+
+com=[undefined];
+i=0;
 app.get("/home",function(req,res){
   
- //Product.find({},function(err,product){
-    
-  //  });
-    Product.find({}).populate('account').exec(function(err,product){
+ 
+    Product.find({})
+    .populate('account')
+    .populate({
+        path: 'comment',
+        populate: {
+            path: 'user'
+        }
+    })
+    .exec(function(err,product){
      
         if(err){
             console.log("eror in finding user products",err)
         }
-        console.log(product);
+      //  console.log(product);
        return res.render('home', {
            your_account : yourAccount,
-           product: product
+           product: product,
+           comment: com,
+           i: i
     })
  })
 
@@ -122,11 +134,41 @@ app.post("/create-session",function(req,res){
         }
     })
 })
+
+app.post('/comment',function(req,res){
+    Product.findById(req.body.product,function(err,product){
+    
+     if(product)
+     {    console.log("found product", product);
+         Comment.create({
+             content: req.body.content,
+             product: req.body.product,
+             account: yourAccount._id
+         },function(err,comm){
+             if(err){
+             console.log("error in creating comment",err)}
+        com[i]=comm;
+        console.log(com[i])
+        i++;
+          // console.log("the comment is" , comm);
+           // product.comment.push(comm)
+             product.save();
+
+            return res.redirect("back");
+         })
+     }else{
+     console.log("no product found");}
+
+    })
+
+
+})
 app.post('/createproduct',function(req,res){
     console.log(yourAccount);
     Product.create({
         pname: req.body.pname,
         description: req.body.description,
+        //comments: req.body.comment,
         account: yourAccount._id
     }),function(err,product){
         console.log("error in creating product",err);
@@ -139,6 +181,8 @@ app.get("/accinfo",function(req,res){
     if(req.cookies.user_id)
     {
         Account.findById(req.cookies.user_id,function(err,account){
+            if(err)
+            {console.log("errpr in creating account",err)}
             yourAccount=account;
             return res.render("accinfo",{
                 title : account.u_name ,

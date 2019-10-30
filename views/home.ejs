@@ -25,7 +25,7 @@
         <div class="col-5 td" id="td3">
             <form>
                 <input type="search" name="message" value="search" style="width: 80%;">
-                <input type="submit" name="se" style="width: 15%; font-size: 90%;">
+                <input type="submit" name="se" style="width: 15%; font-size: 90%;"value="search">
             </form>
         </div>
         <div id="td35" class="col-xl-2 col-lg-3 col-md-1 col-sm-3 td">
@@ -593,12 +593,13 @@
                 <form action="createproduct" method="POST">
                     
                     <input type="text" name="pname" placeholder="name" required><br><br>
+                    <input type="hidden" name="comment" value="no comments" >
                     <textarea name="description" cols="30" rows="3" placeholder="product description"></textarea><br><br>
                     <input type="submit" value="Add">
                 </form>
     
             </div>
-            <% } %>
+           
             <div id="men-head"></div>
             <h3 class="text-center" id="men-head"><b>Product By USERS:</b></h3>
             <div id="yproduct">
@@ -611,11 +612,35 @@
                              Name :  <%= p.pname %><br>
                             description: <%= p.description %></h4>
                            </div>
+                        <% if(comment[0]!=undefined){ %>
+                         <% for(let c of comment){ %>
+                            <% var cid , pid %> 
+                            <% cid = c.product._id %>
+                            <%  pid= p._id %>
+                            
+                            <% if(String(cid) == String(pid)) { %>
+                                
+                                <ul id="post-comment">
+                                    <li>
+                                        <%= c.content %>
+                                    </li>
+                                </ul>
+                              
+                                <% } %>    
+                             <% } %>
+                             <% } %>
                         </div>
+                        <h3>add review</h3>
+                        <form action="/comment" method="POST">
+                            <input type="text" name="content" placeholder="review" required>
+                            <input type="hidden" name="product" value="<%= p._id %>" >
+                            <input type="submit" value="add review">
+                        </form>
+                           
                            <% } %>
                 </ul>
             </div>
-      
+            <% } %>
             <br>
             <hr style="background-color: rgb(172, 161, 161);">
             <div id="terms">
