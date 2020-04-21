@@ -611,24 +611,35 @@
                            <div class="text-center"><h4>
                              Name :  <%= p.pname %><br>
                             description: <%= p.description %></h4>
+                            <a href="#" class="btn press"><b>BUY</b></a>
                            </div>
-                        <% if(comment[0]!=undefined){ %>
-                         <% for(let c of comment){ %>
-                            <% var cid , pid %> 
-                            <% cid = c.product._id %>
-                            <%  pid= p._id %>
-                            
-                            <% if(String(cid) == String(pid)) { %>
-                                
-                                <ul id="post-comment">
-                                    <li>
-                                        <%= c.content %>
-                                    </li>
-                                </ul>
-                              
-                                <% } %>    
-                             <% } %>
-                             <% } %>
+                        <div>
+                            <div>
+                                    <h4>REVIEWS:</h4>
+                            </div>
+                            <% if(comment[0]!=undefined){ %>
+                                <% for(let c of comment){ %>
+                                   <% var cid , pid %> 
+                                   <% cid = c.product._id %>
+                                   <%  pid= p._id %>
+                                   
+                                   <% if(String(cid) == String(pid)) { %>
+                                       
+                                       <ul id="post-comment">
+                                           <li>
+                                   
+                                               <h6> <%= your_account.name %> : </h6> 
+                                               <%= c.content %>
+                                              
+                                           </li>
+                                       </ul>
+                                     
+                                       <% } %>    
+                                    <% } %>
+                                    <% } %>
+                        </div>
+                          
+                        
                         </div>
                         <h3>add review</h3>
                         <form action="/comment" method="POST">
