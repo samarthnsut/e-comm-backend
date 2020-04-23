@@ -41,7 +41,7 @@ $("#men-head").click(function(){
     $("#men").hide();
 
 })
-$(".card").click(function(){
+$(".press").click(function(){
     alert("sorry!!!!!   product not available")
 })
 $("#p-d1").click(function(){

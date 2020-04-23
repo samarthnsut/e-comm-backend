@@ -41,13 +41,6 @@ html
 .sticky + .content {
   padding-top: 60px;
 }
-#nav-top{
-  background-color: #feda6a;
-  width: 5%;
-  position: fixed;
-  margin-left: 5%;
-  margin-top: 35%;
-}
 body
 {
   min-height: 100%;
@@ -189,7 +182,7 @@ body
     box-shadow: 2px 2px black;
   }
 }
-.card:hover
+.press:hover
 {
   animation-name: slide;
   animation-duration: .5s;
@@ -341,14 +334,5 @@ span
   }
 }
 #men-head{
-  background-color: #feda6a;
-}
-#yproduct{
-  color: #f2f2f2;
-}
-#pform{
-
-}
-#product-head{
   background-color: #feda6a;
 }

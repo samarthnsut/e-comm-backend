@@ -1,38 +1,15 @@
-body {
+body{
     background-color: #1d1e22;
 }
-
-#head {
+#head{
     background-color: #feda6a;
     transform: translateY(50px)
 }
-
-#detail {
+#detail{
+    
     transform: translateY(50px);
 }
-
-.info {
+.info{
     background-color: #feda6a;
     margin: 20px;
-}
-
-#continue {
-    padding: 1%;
-    background-color: #feda6a;
-    margin-left: 30%;
-    width: 30%;
-    text-decoration: none;
-    color: #1d1e22;
-    font-size: 130%;
-    animation: slide4;
-    animation-duration: 2.5s;
-    animation-fill-mode: forwards;
-    box-shadow: 4px 4px rgb(71, 70, 70);
-}
-#sign-out{
-      width: 9%;
-      height: 5%;
-      background-color: #feda6a;
-      margin-left: 80%;
-      margin-top: 5%;
 }
